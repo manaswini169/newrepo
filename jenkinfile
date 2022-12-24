@@ -1,0 +1,61 @@
+pipeline
+{
+  agent any
+   stages{
+        stage
+        {
+          steps("git checkout")
+          {
+           git credentialsId: 'git' , url: 'https://github.com/ashishnishanka/realtimecodeNEW.git'
+            echo "git chechkout"
+          }
+          }
+        stage
+        {
+        steps(compile)
+        {
+          sh "mvn compile"
+          echo "compile"
+         }
+        }
+        stage
+        {
+         steps(test)
+         {
+          sh "mvn test"
+          echo "test"
+         }
+        }
+        stage
+        {
+         steps(package)
+         {
+          sh "mvn package"
+          echo "package"
+         }
+        }
+        }
+        }
+        
+ 
+   
+   
+   
+   
+   
+   
+   
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+}
